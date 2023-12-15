@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bat ball stump</title>
     <!-- <link rel="stylesheet" href="style.css"> -->
+    <style>
+        .button_image{
+            height: 50px;
+            width: 50px;
+        }
+        
+    </style>
 </head>
 <body>
     <div class="display">display</div>
@@ -29,7 +36,7 @@
 
     document.querySelector('#display').innerText=`you have chosen bat \n computer has chosen : ${computerChoice}`;
     score.displayScore();
-    ">Bat</button>
+    "><img src="bat.png" class="button_image" alt="bat"></button>
 
     <button onclick="
     randomNumber = Math.random();
@@ -41,7 +48,7 @@
     document.querySelector('#display').innerText=`you have chosen ball \n computer has chosen : ${computerChoice}`;
    score.displayScore();
     
-    ">Ball</button>
+    "><img src="ball.png" class="button_image" alt="Ball"></button>
     <button onclick="
     randomNumber = Math.random();
     computerChoice=compChoice();
@@ -52,7 +59,7 @@
 
     score.displayScore();
     
-    ">Stump</button>
+    "><img src="stump.png" class="button_image" alt="stump"></button>
 
     <button onclick="
     score.win = 0;
