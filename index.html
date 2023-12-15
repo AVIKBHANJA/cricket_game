@@ -57,7 +57,8 @@
     <button onclick="
     score.win = 0;
     score.fail = 0;
-    score.tie = 0
+    score.tie = 0;
+    localStorage.clear();
     document.querySelector('#display').innerText= '';
     score.displayScore();
     ">RESET</button>
@@ -67,15 +68,31 @@
     <script>
     let randomNumber = 0;
     let computerChoice = ''; 
-    
-    let score = {
+    let scoreStr = localStorage.getItem('score');
+
+    let score = JSON.parse(scoreStr) || {
         win : 0,
         fail : 0,
         tie : 0,
-        displayScore: function(){
-            document.querySelector('#displayResult').innerText = `win = ${score.win} \n loss = ${score.fail} \n tie = ${score.tie}`
-        },
     };
+    // if(scoreStr!==undefined)
+    // {
+    //     return score;
+    // }
+    // else {
+    //     score = {
+    //     win : 0,
+    //     fail : 0,
+    //     tie : 0,
+        
+    // };
+    // }
+    
+
+    score.displayScore = function(){
+            document.querySelector('#displayResult').innerText = `win = ${score.win} \n loss = ${score.fail} \n tie = ${score.tie}`
+        }
+    
 
     
 
@@ -97,7 +114,10 @@
         return choice;
     }
     function getResult(compChoice,userChoice)
+
     {
+        localStorage.setItem('score',JSON.stringify(score));
+
         if(compChoice === 'bat' && userChoice ==='ball')
         {
             score.fail+=1;
@@ -128,15 +148,6 @@
         }
     }
 
-
-
-    // let num = document.querySelector('#input').innerText;
-    // function oddEven(num){
-    //     if(num%2==0)
-    //     return 'even';
-    // else
-    //     return 'odd';
-    // }
     
     </script>
 </body>
