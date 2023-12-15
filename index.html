@@ -7,6 +7,7 @@
     <!-- <link rel="stylesheet" href="style.css"> -->
 </head>
 <body>
+    <div class="display">display</div>
 
     <h1>Bat Ball Stump Game</h1>
 
@@ -27,7 +28,7 @@
     getResult(computerChoice,'bat');
 
     document.querySelector('#display').innerText=`you have chosen bat \n computer has chosen : ${computerChoice}`;
-    document.querySelector('#displayResult').innerText = `win = ${win} \n loss = ${fail} \n tie = ${tie}`
+    score.displayScore();
     ">Bat</button>
 
     <button onclick="
@@ -38,7 +39,7 @@
 
 
     document.querySelector('#display').innerText=`you have chosen ball \n computer has chosen : ${computerChoice}`;
-    document.querySelector('#displayResult').innerText = `win = ${win} \n loss = ${fail} \n tie = ${tie}`
+   score.displayScore();
     
     ">Ball</button>
     <button onclick="
@@ -49,28 +50,34 @@
     
     document.querySelector('#display').innerText=`you have chosen: stump \n computer has chosen : ${computerChoice}`;
 
-    document.querySelector('#displayResult').innerText = `win = ${win} \n loss = ${fail} \n tie = ${tie}`
+    score.displayScore();
     
     ">Stump</button>
 
     <button onclick="
-    win = 0;
-    fail = 0;
-    tie = 0
+    score.win = 0;
+    score.fail = 0;
+    score.tie = 0
     document.querySelector('#display').innerText= '';
-document.querySelector('#displayResult').innerText = `win = ${win} \n loss = ${fail} \n tie = ${tie}`
+    score.displayScore();
     ">RESET</button>
     <hr>
     <div id="display"></div>
     <div id="displayResult"></div>
     <script>
-        let randomNumber = 0
+    let randomNumber = 0;
     let computerChoice = ''; 
-    let win = 0;
-    let fail = 0;
-    let tie = 0
+    
+    let score = {
+        win : 0,
+        fail : 0,
+        tie : 0,
+        displayScore: function(){
+            document.querySelector('#displayResult').innerText = `win = ${score.win} \n loss = ${score.fail} \n tie = ${score.tie}`
+        },
+    };
 
-    document.querySelector('#displayResult').innerText = `win = ${win} \n loss = ${fail} \n tie = ${tie}`
+    
 
 
     function compChoice()
@@ -93,34 +100,44 @@ document.querySelector('#displayResult').innerText = `win = ${win} \n loss = ${f
     {
         if(compChoice === 'bat' && userChoice ==='ball')
         {
-            fail+=1;
+            score.fail+=1;
         }
         else if(compChoice === 'ball' && userChoice ==='bat')
         {
-            win+=1;
+            score.win+=1;
         }
         else if(compChoice === 'bat' && userChoice ==='stump')
         {
-            win+=1;
+            score.win+=1;
         }
         else if(compChoice === 'ball' && userChoice ==='stump')
         {
-            fail+=1;
+            score.fail+=1;
         }
         else if(compChoice === 'stump' && userChoice ==='bat')
         {
-            fail+=1;
+            score.fail+=1;
         }
         else if(compChoice === 'stump' && userChoice ==='ball')
         {
-            win+=1;
+            score.win+=1;
         }
         else
         {
-            tie+=1;
+            score.tie+=1;
         }
     }
 
+
+
+    // let num = document.querySelector('#input').innerText;
+    // function oddEven(num){
+    //     if(num%2==0)
+    //     return 'even';
+    // else
+    //     return 'odd';
+    // }
+    
     </script>
 </body>
 </html>
